@@ -31,9 +31,8 @@ void tinhluong()
 	int id[10];
 	float L,TL,PC;
 	printf("Nhap id nhan vien can tinh luong: ");scanf("%s",id);
-	if(strlen(id)!=0);
-         for( int j=0;j<10&&strcmp(a[j].id,id)!=0;j++);
-         if(strcmp(a[j].id,id)==0)
+	if(stringl(*id)!=0);
+
          // so sanh ma id vua nhap voi id co san
         {
 	L = a[j].coefficiencyPay*LCB;
