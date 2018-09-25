@@ -15,7 +15,7 @@ struct employee {
 	char *firstName; //https://stackoverflow.com/questions/26693537/in-c-why-cant-i-assign-a-string-to-a-char-array-after-its-declared
 	int dateOBday; // ngay sinh
 	int dateOBmonth; //thang sinh
-	int dateOByear; // nam sinh
+	int dateOByear; //	nam sinh
 	int sex; // 1 la nam, 0 la nu
 	int position; //chuc vu
 	int department; // don vi cong tac
@@ -26,37 +26,6 @@ struct employee {
 	};
 // function : xoa cac nhan vien lon hon 50 tuoi
 // function : tinh luon, phu cap, thuc linh theo quy uoc trong file .doc
-void tinhluong()
-{
-	int id[10];
-	float L,TL,PC;
-	printf("Nhap id nhan vien can tinh luong: ");scanf("%s",id);
-	if(stringl(*id)!=0);
-    {
-        L = a[j].coefficiencyPay*850;
-        if ( (a[j].pos = GD) ||  (a[j].pos = PGD))
-        {
-		PC = (L*40)/100;
-		TL = L + PC;
-        }
-		else if ( (a[j].pos = TP) ||  (a[j].pos = PP))
-		{
-			PC =(L*25)/100;
-			TL = L + PC;
-		}
-		else
-		{ PC = 0;
-		TL = L;
-	}
-	printf("Muc luong thuc = ",L);
-	printf("Phu cap = ",PC);
-	printf("Luong phai tra = ",TL);
-	}
-	if (stringl(*id)==0) {
-            printf("Khong tim thay nhan vien can tinh luong");
-	}
-}
-
 // function : in ra bang thong ke theo don vi gom cac cot: don vi, so nhan vien nam, so nv nu, tong thuc linh
 //function : dem do dai ki tu
 int stringl(char *s){
@@ -64,8 +33,15 @@ int stringl(char *s){
 	for(length = 0; s[length] != '\0'; ++length);
 	return length;	
 }
-void centerstr(char *s){
-		int contentl = (int)(110-stringl(s)/2);
+void centerstr(char *s, int flag = 0){
+		int space;
+		if(flag ==0){
+			space = 60;
+		}
+		else if(flag ==1 ){
+			space = 45;
+		}
+		int contentl = (int)(space-stringl(s)/2); //was 110
 		for(int i = 0; i<contentl; i++){
 		printf(" ");
 	}
@@ -76,16 +52,66 @@ void blankline(int line){
 		printf("\n");
 	}
 }
-int main(){
-	struct employee A = {
-		2313, 
-		"Phuong", 
-		"Hau"	
-	};
+void header(){
 	blankline(5);
 	centerstr("QUAN LI NHAN VIEN");
 	blankline(5);
+}
+void submenu(int i){
+	char pointer[] = {' ', ' ', ' '};
+	pointer[i] = '>';
 	centerstr("MENU");
 	blankline(5);
+	centerstr("", 1); printf("%c XOA NHAN VIEN TREN 50 TUOI \n", pointer[0]);
+	centerstr("", 1); printf("%c TINH LUONG, PHU CAP, LINH THUC \n", pointer[1]);
+	centerstr("", 1); printf("%c BANG THONG KE\n", pointer[2]);
+}
+void menu(){
+	   int ch;
+	   int currentOption = 0;
+	   submenu(0);
+    while ((ch = getch()) != 27) /* 27 = Esc key */
+    {	
+    	clrscr();
+    	header();
+//        printf("%d", ch);	
+		switch(ch = getch()){
+			case 72:
+				if(currentOption > 0){
+				currentOption--;
+				}
+				submenu(currentOption);
+				break;
+			case 80:
+				if(currentOption < 2){
+				currentOption++;
+				}
+				submenu(currentOption);
+				break;
+		}
+        printf("\n");
+    }
+    printf("ESC %d\n", ch);
+
+}
+int main(){
+	struct employee a = {
+		0001, 
+		"Phuong", 
+		"Hau"	
+	};
+		struct employee b = {
+		0002, 
+		"Phat", 
+		"Nguyen"	
+	};
+		struct employee c = {
+		0003, 
+		"Thanh", 
+		"Nguyen"	
+	};
+	struct employee nhanvien[] = {a, b, c};
+	header();
+	menu();
 	return 0;
 }
