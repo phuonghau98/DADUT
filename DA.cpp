@@ -26,6 +26,37 @@ struct employee {
 	};
 // function : xoa cac nhan vien lon hon 50 tuoi
 // function : tinh luon, phu cap, thuc linh theo quy uoc trong file .doc
+void tinhluong()
+{
+	int id[10];
+	float L,TL,PC;
+	printf("Nhap id nhan vien can tinh luong: ");scanf("%s",id);
+	if(stringl(*id)!=0);
+    {
+        L = a[j].coefficiencyPay*850;
+        if ( (a[j].pos = GD) ||  (a[j].pos = PGD))
+        {
+		PC = (L*40)/100;
+		TL = L + PC;
+        }
+		else if ( (a[j].pos = TP) ||  (a[j].pos = PP))
+		{
+			PC =(L*25)/100;
+			TL = L + PC;
+		}
+		else
+		{ PC = 0;
+		TL = L;
+	}
+	printf("Muc luong thuc = ",L);
+	printf("Phu cap = ",PC);
+	printf("Luong phai tra = ",TL);
+	}
+	if (stringl(*id)==0) {
+            printf("Khong tim thay nhan vien can tinh luong");
+	}
+}
+
 // function : in ra bang thong ke theo don vi gom cac cot: don vi, so nhan vien nam, so nv nu, tong thuc linh
 //function : dem do dai ki tu
 int stringl(char *s){
