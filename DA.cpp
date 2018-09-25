@@ -63,7 +63,7 @@ void tinhluong()
 	
 // function : in ra bang thong ke theo don vi gom cac cot: don vi, so nhan vien nam, so nv nu, tong thuc linh
 //function : dem do dai ki tu
-int stringl(char *s){
+int stringl(char *s){ // tinh do dai cua chuoi
 	int length;
 	for(length = 0; s[length] != '\0'; ++length);
 	return length;	
