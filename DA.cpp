@@ -13,19 +13,45 @@ struct employee {
 	int id;
 	char *lastName; 
 	char *firstName; //https://stackoverflow.com/questions/26693537/in-c-why-cant-i-assign-a-string-to-a-char-array-after-its-declared
-	int dateOBday; // ngay sinh
+/*	int dateOBday; // ngay sinh
 	int dateOBmonth; //thang sinh
 	int dateOByear; //	nam sinh
 	int sex; // 1 la nam, 0 la nu
-	int position; //chuc vu
+*/	char *position; //chuc vu
 	int department; // don vi cong tac
-	float salary; // luong
-	float coefficientPay; //he so
-	float grantPay; //tien phu cap
-	float salarySum; //tong linh thuc
+	float coefficientPay; //he so luong
 	};
 // function : xoa cac nhan vien lon hon 50 tuoi
 // function : tinh luon, phu cap, thuc linh theo quy uoc trong file .doc
+
+void tinhtien(struct employee a[],int n)
+{
+	int id;int i;float ep;
+	float salary = 0,grantPay = 0,salarySum = 0;
+	printf("Nhap id nhan vien can tinh: ");scanf("%d",&id);
+	for (i=0;i<n;i++)
+	{
+		if (id == a[i].id)
+		{
+			ep = a[i].coefficientPay;
+			salary = ep * 850;	
+			if (a[i].position =="GD" || a[i].position =="PGD")
+			{
+				grantPay = (salary*40)/100 ;
+			}
+			else if(a[i].position == "TP"|| a[i].position == "PP")
+			{
+				grantPay = (salary*25)/100;
+			}
+	}
+	}
+	salarySum = salary + grantPay;
+	printf("\nLuong=  %f", salary);
+	printf("\nPhu cap= %f", grantPay);
+	printf("\nTong linh= %f", salarySum);
+	//printf("%f", salarySum);
+		//printf("%s", a[0].position);
+}
 // function : in ra bang thong ke theo don vi gom cac cot: don vi, so nhan vien nam, so nv nu, tong thuc linh
 //function : dem do dai ki tu
 int stringl(char *s){
@@ -98,7 +124,11 @@ int main(){
 	struct employee a = {
 		0001, 
 		"Phuong", 
-		"Hau"	
+		"Hau",
+		"GD",
+		1000,
+		100
+				
 	};
 		struct employee b = {
 		0002, 
@@ -112,6 +142,7 @@ int main(){
 	};
 	struct employee nhanvien[] = {a, b, c};
 	header();
-	menu();
+	//menu();
+	tinhtien(nhanvien, 3);
 	return 0;
 }
